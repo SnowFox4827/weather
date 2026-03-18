@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="header">
+        <h1>Weather Dashboard</h1>
+        <p>{{ config.city }}, {{ config.state }}</p>
+        <a href="/settings">⚙️ Settings</a>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>Current Weather</h2>
+            <p class="big-temp">{{ current.main.temp }}°F</p>
+            <p>{{ current.weather[0].description.title() }}</p>
+
+            <div class="details">
+                <span>Feels: {{ current.main.feels_like }}</span>
+                <span>Humidity: {{ current.main.humidity }}%</span>
+                <span>Wind: {{ current.wind.speed }} mph</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>5-Day Forecast</h2>
+
+            {% for day in forecast %}
+            <div class="forecast-row">
+                <span>{{ day.date }}</span>
+                <span>{{ day.high }}° / {{ day.low }}°</span>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
