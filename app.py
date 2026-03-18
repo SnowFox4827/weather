@@ -48,12 +48,11 @@ def get_forecast(api_key, lat, lon):
 
 # ---------- ROUTES ----------
 
-# 🏠 Dashboard (with first-time setup)
 @app.route("/")
 def dashboard():
     config = load_config()
 
-    # First-time setup screen
+    # 🚀 First-time setup screen
     if not is_config_valid(config):
         return render_template("setup.html")
 
@@ -67,7 +66,11 @@ def dashboard():
     if lat is None:
         return "Invalid location or API key. Go to settings."
 
+    # 🌤 Current weather
     current = get_current_weather(config["api_key"], lat, lon)
+    current_icon = current["weather"][0]["icon"]
+
+    # 📅 Forecast
     forecast_raw = get_forecast(config["api_key"], lat, lon)
 
     daily = defaultdict(list)
@@ -78,21 +81,24 @@ def dashboard():
     forecast = []
     for date, entries in list(daily.items())[:5]:
         temps = [e["main"]["temp"] for e in entries]
+        icon = entries[0]["weather"][0]["icon"]
+
         forecast.append({
             "date": date,
             "high": max(temps),
-            "low": min(temps)
+            "low": min(temps),
+            "icon": icon
         })
 
     return render_template(
         "dashboard.html",
         current=current,
+        current_icon=current_icon,
         forecast=forecast,
         config=config
     )
 
 
-# ⚙️ Settings page (also handles setup form POST)
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     config = load_config()
@@ -108,7 +114,6 @@ def settings():
         return redirect(url_for("dashboard"))
 
     return render_template("settings.html", config=config)
-
 
 # 🚀 Run app
 if __name__ == "__main__":

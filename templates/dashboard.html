@@ -8,35 +8,63 @@
 
 <div class="dashboard">
 
+    <!-- Header -->
     <div class="header">
-        <h1>Weather Dashboard</h1>
-        <p>{{ config.city }}, {{ config.state }}</p>
-        <a href="/settings">⚙️ Settings</a>
+        <h1>🌤 Weather Dashboard</h1>
+        <a href="/settings" class="settings-btn">⚙️ Settings</a>
     </div>
 
-    <div class="grid">
+    <!-- Location -->
+    <div class="card location-card">
+        <h2>{{ config.city }}, {{ config.state }}</h2>
+    </div>
 
-        <div class="card">
-            <h2>Current Weather</h2>
-            <p class="big-temp">{{ current.main.temp }}°F</p>
-            <p>{{ current.weather[0].description.title() }}</p>
+    <!-- Current Weather -->
+    <div class="card current-card">
 
-            <div class="details">
-                <span>Feels: {{ current.main.feels_like }}</span>
-                <span>Humidity: {{ current.main.humidity }}%</span>
-                <span>Wind: {{ current.wind.speed }} mph</span>
-            </div>
+        <h2>Current Weather</h2>
+
+        <img src="https://openweathermap.org/img/wn/{{ current_icon }}@4x.png"
+             alt="weather icon"
+             class="weather-icon">
+
+        <h1>{{ current.main.temp }}°F</h1>
+
+        <p class="description">
+            {{ current.weather[0].description.title() }}
+        </p>
+
+        <p>Feels like {{ current.main.feels_like }}°F</p>
+
+        <div class="details">
+            <p>Humidity: {{ current.main.humidity }}%</p>
+            <p>Wind: {{ current.wind.speed }} mph</p>
         </div>
 
-        <div class="card">
-            <h2>5-Day Forecast</h2>
+    </div>
+
+    <!-- Forecast -->
+    <div class="card forecast-card">
+
+        <h2>5-Day Forecast</h2>
+
+        <div class="forecast-grid">
 
             {% for day in forecast %}
-            <div class="forecast-row">
-                <span>{{ day.date }}</span>
-                <span>{{ day.high }}° / {{ day.low }}°</span>
+            <div class="forecast-day">
+
+                <p class="date">{{ day.date }}</p>
+
+                <img src="https://openweathermap.org/img/wn/{{ day.icon }}@2x.png"
+                     class="weather-icon-small">
+
+                <p class="temps">
+                    {{ day.high }}° / {{ day.low }}°
+                </p>
+
             </div>
             {% endfor %}
+
         </div>
 
     </div>
