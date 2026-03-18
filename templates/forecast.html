@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>5-Day Forecast</h2>
+
+    {% for day in forecast %}
+        <div class="forecast-day">
+            <p><strong>{{ day.date }}</strong></p>
+            <p>High: {{ day.high }} °F</p>
+            <p>Low: {{ day.low }} °F</p>
+        </div>
+    {% endfor %}
+
+    <a href="/">Back</a>
+</div>
+
+</body>
+</html>

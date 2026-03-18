@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Weather App Setup</h2>
+
+    <form method="POST">
+        <input name="api_key" placeholder="API Key" value="{{ config.get('api_key','') }}">
+        <input name="city" placeholder="City" value="{{ config.get('city','') }}">
+        <input name="state" placeholder="State" value="{{ config.get('state','') }}">
+        <input name="country" placeholder="Country" value="{{ config.get('country','') }}">
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="/weather">Current Weather</a>
+    <a href="/forecast">5-Day Forecast</a>
+</div>
+
+</body>
+</html>
