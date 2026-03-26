@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setup Required</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="card settings-card">
+
+        <h1>🚀 First-Time Setup</h1>
+        <p>Enter your weather configuration to get started</p>
+
+        <form method="POST" action="/settings">
+
+            <label>API Key</label>
+            <input type="text" name="api_key" placeholder="Enter Open Weather Map API Key" required>
+
+            <label>City</label>
+            <input type="text" name="city" placeholder="Enter City" required>
+
+            <label>State</label>
+            <input type="text" name="state" placeholder="Enter State Code e.g. XX" required>
+
+            <label>Country</label>
+            <input type="text" name="country" placeholder="Enter Country Code e.g. XX" required>
+
+            <button type="submit">Start Dashboard</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

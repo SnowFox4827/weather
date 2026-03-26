@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🌤 Weather Dashboard</h1>
+        <a href="/settings" class="settings-btn">⚙️ Settings</a>
+    </div>
+
+    <!-- Location -->
+    <div class="card location-card">
+        <h2>{{ config.city }}, {{ config.state }}</h2>
+    </div>
+
+    <!-- Current Weather -->
+    <div class="card current-card">
+
+        <h2>Current Weather</h2>
+
+        <img src="https://openweathermap.org/img/wn/{{ current_icon }}@4x.png"
+             alt="weather icon"
+             class="weather-icon">
+
+        <h1>{{ current.main.temp }}°F</h1>
+
+        <p class="description">
+            {{ current.weather[0].description.title() }}
+        </p>
+
+        <p>Feels like {{ current.main.feels_like }}°F</p>
+
+        <div class="details">
+            <p>Humidity: {{ current.main.humidity }}%</p>
+            <p>Wind: {{ current.wind.speed }} mph</p>
+        </div>
+
+    </div>
+
+    <!-- Forecast -->
+    <div class="card forecast-card">
+
+        <h2>5-Day Forecast</h2>
+
+        <div class="forecast-grid">
+
+            {% for day in forecast %}
+            <div class="forecast-day">
+
+                <p class="date">{{ day.date }}</p>
+
+                <img src="https://openweathermap.org/img/wn/{{ day.icon }}@2x.png"
+                     class="weather-icon-small">
+
+                <p class="temps">
+                    {{ day.high }}° / {{ day.low }}°
+                </p>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

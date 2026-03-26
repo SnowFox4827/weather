@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="header">
+        <h1>⚙️ Settings</h1>
+    </div>
+
+    <div class="card settings-card">
+
+        <form method="POST">
+
+            <label>API Key</label>
+            <input type="text" name="api_key" value="{{ config.get('api_key','') }}">
+
+            <label>City</label>
+            <input type="text" name="city" value="{{ config.get('city','') }}">
+
+            <label>State</label>
+            <input type="text" name="state" value="{{ config.get('state','') }}">
+
+            <label>Country</label>
+            <input type="text" name="country" value="{{ config.get('country','') }}">
+
+            <button type="submit">Save</button>
+
+        </form>
+
+        <a href="/">⬅ Back</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
