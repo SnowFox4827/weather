@@ -179,3 +179,32 @@ body {
     width: 50px;
     height: 50px;
 }
+
+/* ---------- BACK BUTTON ---------- */
+.back-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 14px;
+
+    background: #334155;
+    color: #e2e8f0;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+    border: 1px solid #475569;
+
+    transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+}
+
+.back-button:hover {
+    background: #475569;
+    border-color: #64748b;
+    transform: translateY(-1px);
+}
+
+.back-button:active {
+    transform: translateY(0px);
+}
+}
