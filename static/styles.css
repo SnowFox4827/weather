@@ -122,6 +122,7 @@ body {
 .settings-card {
     max-width: 500px;
     margin: auto;
+    position: relative; /* REQUIRED for absolute back button */
 }
 
 .settings-card form {
@@ -180,11 +181,14 @@ body {
     height: 50px;
 }
 
-/* ---------- BACK BUTTON ---------- */
+/* ---------- BACK BUTTON (TOP RIGHT) ---------- */
 .back-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 14px;
+    padding: 8px 12px;
 
     background: #334155;
     color: #e2e8f0;
@@ -206,5 +210,4 @@ body {
 
 .back-button:active {
     transform: translateY(0px);
-}
 }
