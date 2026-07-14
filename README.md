@@ -77,7 +77,7 @@ This will:
 3. Run the following command:
 
 ```bash
-docker compose up --build
+docker compose up -d
 ```
 
 This will:
