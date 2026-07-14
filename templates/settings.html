@@ -21,30 +21,39 @@
             <form method="POST">
 
                 <div class="form-group">
-                    <label for="api_key">API Key</label>
-                    <input type="text" id="api_key" name="api_key"
-                           value="{{ config.get('api_key','') }}">
-                </div>
-
-                <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" id="city" name="city"
-                           value="{{ config.get('city','') }}">
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        value="{{ config.get('city', '') }}"
+                        required
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="state">State</label>
-                    <input type="text" id="state" name="state"
-                           value="{{ config.get('state','') }}">
+                    <input
+                        type="text"
+                        id="state"
+                        name="state"
+                        value="{{ config.get('state', '') }}"
+                        required
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="country">Country</label>
-                    <input type="text" id="country" name="country"
-                           value="{{ config.get('country','') }}">
+                    <input
+                        type="text"
+                        id="country"
+                        name="country"
+                        value="{{ config.get('country', '') }}"
+                        required
+                    >
                 </div>
 
-                <button type="submit">Save</button>
+                <button type="submit">Save Location</button>
 
             </form>
 

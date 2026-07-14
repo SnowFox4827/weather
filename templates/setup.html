@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Setup Required</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -11,21 +12,44 @@
     <div class="card settings-card">
 
         <h1>🚀 First-Time Setup</h1>
-        <p>Enter your weather configuration to get started</p>
 
-        <form method="POST" action="/settings">
+        <p>
+            Enter the location you would like to use for your weather dashboard.
+        </p>
 
-            <label>API Key</label>
-            <input type="text" name="api_key" placeholder="Enter Open Weather Map API Key" required>
+        <p class="settings-note">
+            The OpenWeatherMap API key is loaded from the application's
+            <code>.env</code> file.
+        </p>
 
-            <label>City</label>
-            <input type="text" name="city" placeholder="Enter City" required>
+        <form method="POST" action="{{ url_for('settings') }}">
 
-            <label>State</label>
-            <input type="text" name="state" placeholder="Enter State Code e.g. XX" required>
+            <label for="city">City</label>
+            <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter City"
+                required
+            >
 
-            <label>Country</label>
-            <input type="text" name="country" placeholder="Enter Country Code e.g. XX" required>
+            <label for="state">State</label>
+            <input
+                type="text"
+                id="state"
+                name="state"
+                placeholder="Enter State (e.g. TX)"
+                required
+            >
+
+            <label for="country">Country</label>
+            <input
+                type="text"
+                id="country"
+                name="country"
+                placeholder="Enter Country (e.g. US)"
+                required
+            >
 
             <button type="submit">Start Dashboard</button>
 
