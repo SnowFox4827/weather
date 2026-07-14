@@ -47,6 +47,29 @@ EXPOSE 5000
 CMD ["python", "app.py"]
 ```
 
+### docker-compose
+```docker-compose.yml
+services:
+  weather-app:
+    build: .
+    container_name: weather-app
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./config.json:/app/config.json
+
+    restart: unless-stopped
+```
+
+This will:
+- Ensure the environment and volumes are set
+- Make it where the container doesn't stop if there;s an error
+
 ### Building and Running
 
 1. Ensure you have Docker and Docker Compose installed.
