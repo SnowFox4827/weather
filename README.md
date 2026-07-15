@@ -11,6 +11,15 @@ Use a `.env` file to store sensitive information and environment-specific settin
 ```
 API_KEY=your_api_key_here
 ```
+Use a `config.json` file to store locaiton information **Do not commit `config.json` to version control.**
+
+### config.json Example
+
+```
+  "city": "",
+  "state": "",
+  "country": ""
+```
 
 ## Dependencies
 
@@ -42,7 +51,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 5001
 
 CMD ["python", "app.py"]
 ```
@@ -55,7 +64,7 @@ services:
     container_name: weather-app
 
     ports:
-      - "5000:5000"
+      - "5001:5001"
 
     env_file:
       - .env
