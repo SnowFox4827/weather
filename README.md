@@ -11,7 +11,7 @@ Use a `.env` file to store sensitive information and environment-specific settin
 ```
 API_KEY=your_api_key_here
 ```
-Use a `config.json` file to store locaiton information **Do not commit `config.json` to version control.**
+Use a `config.json` file to store location information. **Do not commit `config.json` to version control.**
 
 ### config.json Example
 
@@ -77,7 +77,7 @@ services:
 
 This will:
 - Ensure the environment and volumes are set
-- Make it where the container doesn't stop if there;s an error
+- Make it where the container doesn't stop if there's an error
 
 ### Building and Running
 
@@ -94,9 +94,9 @@ This will:
 - Install dependencies.
 - Copy application files.
 - Load `.env` via Docker Compose.
-- Start the Flask app on port 5000.
+- Start the Flask app on port 5001.
 
-Access the dashboard at: [http://localhost:5000](http://localhost:5000)
+Access the dashboard at: [http://localhost:5001](http://localhost:5001)
 
 ## .gitignore Recommendation
 

@@ -1,6 +1,7 @@
 import json
 import os
 from collections import defaultdict
+from datetime import datetime
 
 import requests
 from dotenv import load_dotenv
@@ -131,8 +132,10 @@ def dashboard():
     for date, entries in list(daily.items())[:5]:
         temps = [e["main"]["temp"] for e in entries]
 
+        parsed_date = datetime.strptime(date, "%Y-%m-%d")
+
         forecast.append({
-            "date": date,
+            "date": parsed_date.strftime("%a, %b %d"),
             "high": round(max(temps)),
             "low": round(min(temps)),
             "icon": entries[0]["weather"][0]["icon"]
