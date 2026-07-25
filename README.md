@@ -86,7 +86,7 @@ This will:
 3. Run the following command:
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
 This will:
